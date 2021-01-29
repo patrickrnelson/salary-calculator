@@ -2,14 +2,14 @@
 
 ### Let's get started!
 
-- [ ] Source in and test HTML, CSS, JS, JQ files
-- [ ] Input form that collects the following (HTML)
+- [x] Source in and test HTML, CSS, JS, JQ files
+- [x] Input form that collects the following (HTML)
   - employee first name
   - last name
   - ID number
   - job title
   - annual salary
-- [ ] 'Submit' button (HTML)
+- [x] 'Submit' button (HTML)
   - [ ] Collect the form information (JQ)
   - [ ] Store the information (JQ)
   - [ ] Append information to the DOM (JQ)
