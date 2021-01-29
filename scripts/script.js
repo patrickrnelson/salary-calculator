@@ -1,10 +1,8 @@
-console.log('JS JS JS');
-
 $(document).ready(onReady);
 
-function onReady() {
-  console.log('JQ JQ JQ');
+let allEmployees = [];
 
+function onReady() {
   // listen for a click on the submit button
   $(document).on('click', '#submitBtn', onClick);
 }
@@ -16,5 +14,15 @@ function onClick() {
   let jobTitle = $('#jobTitleInput').val();
   let salary = $('#annualSalaryInput').val();
 
-  console.log(lastName);
+  let newEntry = {
+    firstName: firstName,
+    lastName: lastName,
+    employeeID: id,
+    jobTitle: jobTitle,
+    annualSalary: salary,
+  };
+
+  allEmployees.push(newEntry);
+
+  console.log(allEmployees);
 }
