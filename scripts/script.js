@@ -19,11 +19,17 @@ let allEmployees = [
 
 function onReady() {
   // listen for a click on the submit button
-  $(document).on('click', '#submitBtn', onClick);
+  $(document).on('click', '#submitBtn', submitClick);
+
+  // listen for a click on the delete button
+  $(document).on('click', '.delete-button', deleteEntry);
+
+  // appends the list of allEmployees right away
+  // in case there are any entries pre-loaded
   appendToDom(allEmployees);
 }
 
-function onClick() {
+function submitClick() {
   let firstName = $('#firstNameInput').val();
   let lastName = $('#lastNameInput').val();
   let id = $('#idNumberInput').val();
@@ -53,6 +59,7 @@ function onClick() {
 // push each entry to the DOM
 function appendToDom(array) {
   $('#employeeTable').empty();
+  let deleteBtn = `<button>delete</button>`;
   for (item of array) {
     $('#employeeTable').append(
       `<tr>
@@ -61,6 +68,7 @@ function appendToDom(array) {
       <td>${item.employeeID}</td>
       <td>${item.jobTitle}</td>
       <td>$${item.annualSalary}</td>
+      <td class="delete-button">${deleteBtn}</td>
     </tr>`
     );
   }
@@ -73,4 +81,8 @@ function clearInputs() {
   $('#idNumberInput').val('');
   $('#jobTitleInput').val('');
   $('#annualSalaryInput').val('');
+}
+
+function deleteEntry() {
+  console.log('delete');
 }
