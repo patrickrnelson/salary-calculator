@@ -15,7 +15,7 @@
   - [x] Append information to the DOM (JQ)
   - [x] Clear the input fields (JQ)
 - [x] Create a delete button that removes an employee from the DOM
-- [] Append a 'total monthly expenses' amount to the DOM
+- [x] Append a 'total monthly expenses' amount to the DOM
 
 ### Stretch Goals
 

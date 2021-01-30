@@ -27,6 +27,9 @@ function onReady() {
   // appends the list of allEmployees right away
   // in case there are any entries pre-loaded
   appendToDom(allEmployees);
+
+  // show the total expenses on load
+  totalExpenses();
 }
 
 // when submit is clicked, take all of the input vals
@@ -56,6 +59,10 @@ function submitClick() {
   // this clears inputs after submit btn click
   // will probably need to move to the appendToDom so we can check if inputs are filled
   clearInputs();
+
+  // This calculates total expenses
+  // and is responsible for appending to DOM
+  totalExpenses();
 }
 
 // loop through an array
@@ -68,7 +75,7 @@ function appendToDom(array) {
       `<tr>
       <td>${item.firstName}</td>
       <td>${item.lastName}</td>
-      <td>${item.employeeID}</td>
+      <td class='rowID'>${item.employeeID}</td>
       <td>${item.jobTitle}</td>
       <td>$${item.annualSalary}</td>
       <td class="delete-button">${deleteBtn}</td>
@@ -88,6 +95,30 @@ function clearInputs() {
 
 //
 function deleteEntry() {
-  console.log('delete');
+  // this gets the ID number of the deleted employee
+  let $thisID = $(this).siblings('.rowID').text();
+  console.log(Number($thisID));
+  // if $thisID matches someone in the array, set their salary to 0
+  for (item of allEmployees) {
+    if (item.employeeID === Number($thisID)) {
+      item.annualSalary = 0;
+    }
+  }
+  // this will remove the whole row
   $(this).parent().remove();
+  // update total expenses to reflect the deleted salary
+  totalExpenses();
+}
+
+function totalExpenses() {
+  // Calculate the total of all salaries
+  let allSalaries = 0;
+  for (item of allEmployees) {
+    allSalaries += item.annualSalary;
+  }
+  // calculate monthly expense of all of the salaries
+  let monthlySalaries = allSalaries / 12;
+  // append monthly expense to DOM
+  $('#expenses').empty();
+  $('#expenses').append(`<h4>Total Monthly Expense: $${monthlySalaries}</h4>`);
 }
