@@ -29,6 +29,9 @@ function onReady() {
   appendToDom(allEmployees);
 }
 
+// when submit is clicked, take all of the input vals
+// and store them in an object (newEntry).
+// that object gets pushed to the allEmployees array
 function submitClick() {
   let firstName = $('#firstNameInput').val();
   let lastName = $('#lastNameInput').val();
@@ -39,19 +42,19 @@ function submitClick() {
   let newEntry = {
     firstName: firstName,
     lastName: lastName,
-    employeeID: id,
+    employeeID: Number(id),
     jobTitle: jobTitle,
-    annualSalary: salary,
+    annualSalary: Number(salary),
   };
 
   allEmployees.push(newEntry);
 
-  // will loop through the allEmployees array
+  // this will loop through the allEmployees array
   // and push each entry to the DOM
   appendToDom(allEmployees);
 
-  // clears input after submit btn click
-  // will probably need to move to the appendToDom f so we can check if inputs are filled
+  // this clears inputs after submit btn click
+  // will probably need to move to the appendToDom so we can check if inputs are filled
   clearInputs();
 }
 
@@ -83,6 +86,8 @@ function clearInputs() {
   $('#annualSalaryInput').val('');
 }
 
+//
 function deleteEntry() {
   console.log('delete');
+  $(this).parent().remove();
 }
