@@ -42,27 +42,38 @@ function submitClick() {
   let jobTitle = $('#jobTitleInput').val();
   let salary = $('#annualSalaryInput').val();
 
-  let newEntry = {
-    firstName: firstName,
-    lastName: lastName,
-    employeeID: Number(id),
-    jobTitle: jobTitle,
-    annualSalary: Number(salary),
-  };
+  // if any inputs are blank, call the errorMessage function
+  if (
+    firstName == '' ||
+    lastName == '' ||
+    id == '' ||
+    jobTitle == '' ||
+    salary == ''
+  ) {
+    errorMessage();
+  } else {
+    let newEntry = {
+      firstName: firstName,
+      lastName: lastName,
+      employeeID: Number(id),
+      jobTitle: jobTitle,
+      annualSalary: Number(salary),
+    };
 
-  allEmployees.push(newEntry);
+    allEmployees.push(newEntry);
 
-  // this will loop through the allEmployees array
-  // and push each entry to the DOM
-  appendToDom(allEmployees);
+    // this will loop through the allEmployees array
+    // and push each entry to the DOM
+    appendToDom(allEmployees);
 
-  // this clears inputs after submit btn click
-  // will probably need to move to the appendToDom so we can check if inputs are filled
-  clearInputs();
+    // this clears inputs after submit btn click
+    // will probably need to move to the appendToDom so we can check if inputs are filled
+    clearInputs();
 
-  // This calculates total expenses
-  // and is responsible for appending to DOM
-  totalExpenses();
+    // This calculates total expenses
+    // and is responsible for appending to DOM
+    totalExpenses();
+  }
 }
 
 // loop through an array
@@ -121,4 +132,8 @@ function totalExpenses() {
   // append monthly expense to DOM
   $('#expenses').empty();
   $('#expenses').append(`<h4>Total Monthly Expense: $${monthlySalaries}</h4>`);
+}
+
+function errorMessage() {
+  console.log('ERROR');
 }
