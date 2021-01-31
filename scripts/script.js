@@ -82,8 +82,9 @@ function appendToDom(array) {
   $('#employeeTable').empty();
   let deleteBtn = `<button>delete</button>`;
   for (item of array) {
-    $('#employeeTable').append(
-      `<tr>
+    if (item.annualSalary > 0) {
+      $('#employeeTable').append(
+        `<tr>
       <td>${item.firstName}</td>
       <td>${item.lastName}</td>
       <td class='rowID'>${item.employeeID}</td>
@@ -91,7 +92,8 @@ function appendToDom(array) {
       <td>$${item.annualSalary}</td>
       <td class="delete-button">${deleteBtn}</td>
     </tr>`
-    );
+      );
+    }
   }
 }
 
@@ -108,7 +110,7 @@ function clearInputs() {
 function deleteEntry() {
   // this gets the ID number of the deleted employee
   let $thisID = $(this).siblings('.rowID').text();
-  console.log(Number($thisID));
+  console.log('ID:', Number($thisID));
   // if $thisID matches someone in the array, set their salary to 0
   for (item of allEmployees) {
     if (item.employeeID === Number($thisID)) {
@@ -131,7 +133,16 @@ function totalExpenses() {
   let monthlySalaries = allSalaries / 12;
   // append monthly expense to DOM
   $('#expenses').empty();
-  $('#expenses').append(`<h4>Total Monthly Expense: $${monthlySalaries}</h4>`);
+  if (monthlySalaries <= 20000) {
+    $('#expenses').append(
+      `<h4>Total Monthly Expense: $${monthlySalaries}</h4>`
+    );
+  } else {
+    $('#expenses').css('background-color', 'red');
+    $('#expenses').append(
+      `<h4>Total Monthly Expense: $${monthlySalaries}</h4>`
+    );
+  }
 }
 
 function errorMessage() {
