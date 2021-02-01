@@ -147,10 +147,10 @@ function totalExpenses() {
   // append monthly expense to DOM
   $('#expenses').empty();
   if (monthlySalaries <= 20000) {
-    $('#expenses').css('background-color', 'lightslategrey');
+    $('#expenses').css('background-color', '#d8e9dd');
     $('#expenses').append(monthlyDecimal);
   } else {
-    $('#expenses').css('background-color', '#ff7a7a');
+    $('#expenses').css('background-color', '#F68765');
     $('#expenses').append(monthlyDecimal);
   }
 }
