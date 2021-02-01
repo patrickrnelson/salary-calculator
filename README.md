@@ -4,7 +4,7 @@
 
 # PROJECT NAME
 
-Salary Calculator (NEED TO UPDATE READ ME)
+Salary Calculator
 
 ## Description
 
