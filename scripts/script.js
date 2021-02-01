@@ -13,7 +13,7 @@ let allEmployees = [
     lastName: 'Nelson',
     employeeID: 2468,
     jobTitle: 'Front-end Developer',
-    annualSalary: 120000,
+    annualSalary: 100000,
   },
 ];
 
@@ -131,17 +131,16 @@ function totalExpenses() {
   }
   // calculate monthly expense of all of the salaries
   let monthlySalaries = allSalaries / 12;
+  // Show two decimal places in monthly salaries
+  let monthlyDecimal = monthlySalaries.toFixed(2);
   // append monthly expense to DOM
   $('#expenses').empty();
   if (monthlySalaries <= 20000) {
-    $('#expenses').append(
-      `<h4>Total Monthly Expense: $${monthlySalaries}</h4>`
-    );
+    $('#expenses').css('background-color', 'lightslategrey');
+    $('#expenses').append(`$${monthlyDecimal}`);
   } else {
-    $('#expenses').css('background-color', 'red');
-    $('#expenses').append(
-      `<h4>Total Monthly Expense: $${monthlySalaries}</h4>`
-    );
+    $('#expenses').css('background-color', 'tomato');
+    $('#expenses').append(' $' + monthlyDecimal);
   }
 }
 
