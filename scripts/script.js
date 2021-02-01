@@ -6,14 +6,14 @@ let allEmployees = [
     lastName: 'Aune',
     employeeID: 1357,
     jobTitle: 'CX Designer',
-    annualSalary: 150000,
+    annualSalary: 84000,
   },
   {
     firstName: 'Patrick',
     lastName: 'Nelson',
     employeeID: 2468,
     jobTitle: 'Front-end Developer',
-    annualSalary: 100000,
+    annualSalary: 50000,
   },
 ];
 
