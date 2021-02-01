@@ -60,6 +60,8 @@ function submitClick() {
       annualSalary: Number(salary),
     };
 
+    clearErrorMessage();
+
     allEmployees.push(newEntry);
 
     // this will loop through the allEmployees array
@@ -80,7 +82,7 @@ function submitClick() {
 // push each entry to the DOM
 function appendToDom(array) {
   $('#employeeTable').empty();
-  let deleteBtn = `<button>delete</button>`;
+  let deleteBtn = `<button id="deleteBtn">Delete</button>`;
   for (item of array) {
     // convert item.annualSalary to US currency with commas
     let salaryWithCommas = new Intl.NumberFormat('en-US', {
@@ -148,11 +150,17 @@ function totalExpenses() {
     $('#expenses').css('background-color', 'lightslategrey');
     $('#expenses').append(monthlyDecimal);
   } else {
-    $('#expenses').css('background-color', 'tomato');
+    $('#expenses').css('background-color', '#ff7a7a');
     $('#expenses').append(monthlyDecimal);
   }
 }
 
 function errorMessage() {
-  console.log('ERROR');
+  let el = $('#errorMessage');
+  el.text('ERROR Missing Input');
+}
+
+function clearErrorMessage() {
+  let el = $('#errorMessage');
+  el.text('');
 }

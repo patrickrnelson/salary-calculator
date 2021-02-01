@@ -1,7 +1,89 @@
 body {
   background: lightslategrey;
+  font-family: sans-serif;
 }
 
 #expenses-div {
   display: flex;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  margin-left: 20px;
+}
+
+form {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+input {
+  margin-right: 10px;
+}
+
+#idNumberInput {
+  width: 8%;
+}
+
+#error-div {
+  height: 40px;
+}
+
+#errorMessage {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(187, 42, 42);
+  text-align: center;
+  padding-top: 5px;
+}
+
+table,
+th,
+td {
+  border: 4px solid transparent;
+}
+
+table {
+  margin: 0% 10% 1% 10%;
+  border-bottom: 3px solid black;
+}
+
+thead {
+  text-align: left;
+}
+
+#expenses-div {
+  margin-left: 10%;
+}
+
+#expenses {
+  margin-left: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 100px;
+  text-align: center;
+}
+
+h4 {
+  font-weight: normal;
+}
+
+#deleteBtn {
+  height: 25px;
+  width: 80px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: none;
+}
+
+#deleteBtn:hover {
+  background-color: rgb(233, 92, 92);
+  font-weight: bold;
+  border: none;
+  box-shadow: none;
+  border-radius: 3px;
 }
