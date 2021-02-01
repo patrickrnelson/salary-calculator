@@ -82,6 +82,12 @@ function appendToDom(array) {
   $('#employeeTable').empty();
   let deleteBtn = `<button>delete</button>`;
   for (item of array) {
+    // convert item.annualSalary to US currency with commas
+    let salaryWithCommas = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(item.annualSalary);
+
     if (item.annualSalary > 0) {
       $('#employeeTable').append(
         `<tr>
@@ -89,7 +95,7 @@ function appendToDom(array) {
       <td>${item.lastName}</td>
       <td class='rowID'>${item.employeeID}</td>
       <td>${item.jobTitle}</td>
-      <td>$${item.annualSalary}</td>
+      <td class="salaryNumber">${salaryWithCommas}</td>
       <td class="delete-button">${deleteBtn}</td>
     </tr>`
       );
@@ -132,15 +138,18 @@ function totalExpenses() {
   // calculate monthly expense of all of the salaries
   let monthlySalaries = allSalaries / 12;
   // Show two decimal places in monthly salaries
-  let monthlyDecimal = monthlySalaries.toFixed(2);
+  let monthlyDecimal = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(monthlySalaries);
   // append monthly expense to DOM
   $('#expenses').empty();
   if (monthlySalaries <= 20000) {
     $('#expenses').css('background-color', 'lightslategrey');
-    $('#expenses').append(`$${monthlyDecimal}`);
+    $('#expenses').append(monthlyDecimal);
   } else {
     $('#expenses').css('background-color', 'tomato');
-    $('#expenses').append(' $' + monthlyDecimal);
+    $('#expenses').append(monthlyDecimal);
   }
 }
 
